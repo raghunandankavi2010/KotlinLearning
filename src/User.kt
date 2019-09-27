@@ -1,0 +1,1 @@
+data class User private constructor(val  userName:String, val age:Int)
