@@ -1,4 +1,6 @@
-
+/**
+ * Structured equals vs Referential equality
+ */
 fun main(){
 
     val student1 = Student("Raghunandan",23)
@@ -10,15 +12,15 @@ fun main(){
         println("Both student contents are not same")
     }
 
-    // referetial equality ===
+    // referential equality ===
     if(student1 === student2){
         println("Both point to same object")
     }else {
         println("Both do not point to same object")
     }
 
-    val a = Integer(10)
-    val b = Integer(10)
+    val a = Integer.valueOf(10)
+    val b = Integer.valueOf(10)
 
 
     if(a == b){
