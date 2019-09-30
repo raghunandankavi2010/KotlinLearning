@@ -1,1 +1,7 @@
 /out/
+
+.idea/libraries/org_jetbrains_kotlinx_kotlinx_coroutines_core_1_3_2.xml
+
+.idea/libraries/KotlinJavaRuntime.xml
+
+.idea/modules.xml
