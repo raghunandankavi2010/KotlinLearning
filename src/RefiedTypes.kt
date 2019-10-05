@@ -1,10 +1,9 @@
-/*
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 
-*/
+
 /**
  * https://stackoverflow.com/questions/45949584/how-does-the-reified-keyword-in-kotlin-work
- *//*
+ */
 
 
 // 1. Reified types can be used only with inline functions
@@ -17,7 +16,7 @@ inline fun <reified T : Any> String.toKotlinObject(): T {
 }
 
 
-fun main(args: Array<String>) {
+fun main() {
 
 
     val string = " {\n" +
@@ -32,5 +31,18 @@ fun main(args: Array<String>) {
     println("Type : ${response.type}")
 }
 
+/**
+ * In android
+ * inline fun <T> Context.openActivity(it: Class<T>, extras: Bundle.() -> Unit = {}) {
+ * var intent = Intent(this, it)
+ * intent.putExtras(Bundle().apply(extras))
+ * startActivity(intent)
+ * }
+ * Usage : T is resolved to MainActivity
+ * openActivity(MyActivity::class.java) {
+ * putString("string.key", "string.value")
+ * putInt("string.key", 43)
+ * }
+ */
 
-*/
+
