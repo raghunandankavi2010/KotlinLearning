@@ -16,6 +16,7 @@ class PersonBuilder {
 
     private val addresses = mutableListOf<Address>()
 
+    // ADDRESSES.() receiver with addresses
     fun addresses(block: ADDRESSES.() -> Unit) {
         addresses.addAll(ADDRESSES().apply(block))
     }
