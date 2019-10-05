@@ -3,7 +3,9 @@ import java.util.*
 
 fun person(block: PersonBuilder.() -> Unit): Person = PersonBuilder().apply(block).build()
 
-
+/**
+ *  Type Safe Builders
+ */
 class PersonBuilder {
 
     var name: String = ""
