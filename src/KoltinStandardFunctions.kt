@@ -11,7 +11,9 @@
  */
 
 
-
+/**
+ * Scoping functions kotlin
+ */
 fun main(){
 
     val string = "Hello World"
@@ -75,6 +77,18 @@ fun runext(string:String){
     }
 
     println("Result $result2")
+
+
+    data class Person(var name: String, var tutorial : String)
+    val person = Person("Raghunandan", "Kotlin")
+
+    person.run {
+        name = "Raghunandan Kavi" // name is modified
+        tutorial = "Kotlin tutorials" // tutorial also modified
+
+    }
+
+    println("Name : ${person.name} Tutorials ${person.tutorial}")
 }
 
 fun apply(string:String){
