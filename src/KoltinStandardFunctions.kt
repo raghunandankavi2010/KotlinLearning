@@ -21,7 +21,6 @@ fun main(){
     let(string)
     runext(string)
     apply(string)
-
 }
 
 fun also(string :String){
@@ -44,6 +43,18 @@ fun with(string :String){
     }
 
     println("Result $result")
+
+    // Another Example
+    data class Person(var name: String, var tutorial : String)
+    val person = Person("Raghunandan", "Kotlin")
+
+    with(person) {
+        name = "Raghunandan Kavi" // name is modified
+        tutorial = "Kotlin tutorials" // tutorial also modified
+
+    }
+
+    println("Name: " + person.name+" tutorial :"+person.tutorial)
 
 }
 
@@ -72,7 +83,6 @@ fun apply(string:String){
         println(this) // this refers to the string
 
     }
-
     println("Result $result")
 }
 
