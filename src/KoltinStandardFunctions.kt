@@ -19,10 +19,10 @@ fun main(){
     val string = "Hello World"
 
     also(string)
-    with(string)
+    with(string) // object and takes a param
     let(string)
-    runext(string)
-    apply(string)
+    runext(string) //
+    apply(string) // apply some properties to object return type object
 }
 
 fun also(string :String){
