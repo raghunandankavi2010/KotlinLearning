@@ -7,12 +7,14 @@ import kotlinx.coroutines.flow.*
  *  Each emission will happen on a thread pool
  *  Collection of items will happen on main thread.
  */
+@ExperimentalCoroutinesApi
 fun requestFlow(i: Int): Flow<String> = flow {
     delay(500) // wait 500 ms
     emit("$i")
     println("Emission Thread :{${Thread.currentThread().name}")
 }.flowOn(Dispatchers.IO)
 
+@ExperimentalCoroutinesApi
 fun main() = runBlocking<Unit> {
     val startTime = System.currentTimeMillis() // remember the start time
     (1..3).asFlow()
