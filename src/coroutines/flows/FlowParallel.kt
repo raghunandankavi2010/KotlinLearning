@@ -3,10 +3,14 @@ package coroutines.flows
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
 
+/**
+ *  Each emission will happen on a thread pool
+ *  Collection of items will happen on main thread.
+ */
 fun requestFlow(i: Int): Flow<String> = flow {
     delay(500) // wait 500 ms
     emit("$i")
-    println("Current Thread :{${Thread.currentThread().name}")
+    println("Emission Thread :{${Thread.currentThread().name}")
 }.flowOn(Dispatchers.IO)
 
 fun main() = runBlocking<Unit> {
@@ -16,6 +20,13 @@ fun main() = runBlocking<Unit> {
             requestFlow(it)
         }.collect { value ->
             // collect and print
+            println("Collection Thread :{${Thread.currentThread().name}")
             println("$value at ${System.currentTimeMillis() - startTime} ms from start")
         }
+}
+// to map extension function
+suspend fun <K, V> Flow<Pair<K, V>>.toMap(): Map<K, V> {
+    val result = mutableMapOf<K, V>()
+    collect { (k, v) -> result[k] = v }
+    return result
 }
