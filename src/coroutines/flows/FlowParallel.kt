@@ -2,6 +2,9 @@ package coroutines.flows
 
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
+import java.util.concurrent.Executor
+import java.util.concurrent.Executors
+import kotlin.coroutines.CoroutineContext
 
 /**
  *  Each emission will happen on a thread pool
@@ -20,7 +23,7 @@ fun main() = runBlocking<Unit> {
     (1..3).asFlow()
         .flatMapMerge {
             requestFlow(it)
-        }.flowOn(Dispatchers.IO) // does not matter where you put flow on emission happens on thread pool
+        }.flowOn(dispatcher) // does not matter where you put flow on emission happens on thread pool
         .collect { value ->
             // collect and print
             println("Collection Thread : ${Thread.currentThread().name}")
@@ -33,4 +36,12 @@ suspend fun <K, V> Flow<Pair<K, V>>.toMap(): Map<K, V> {
     val result = mutableMapOf<K, V>()
     collect { (k, v) -> result[k] = v }
     return result
+}
+
+val computationExecutor: Executor = Executors.newFixedThreadPool(3)
+
+val dispatcher = object : CoroutineDispatcher() {
+    override fun dispatch(context: CoroutineContext, block: Runnable) {
+        computationExecutor.execute(block)
+    }
 }
