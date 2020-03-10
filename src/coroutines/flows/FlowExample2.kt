@@ -62,7 +62,7 @@ private fun fetchAll(): String {
             val reader: Reader = InputStreamReader(inputstream, "UTF-8")
             val br = BufferedReader(reader)
             val wc: MutableMap<String, Int?> = TreeMap()
-            var line: String? = null
+            var line: String?
             while (br.readLine().also { line = it } != null) {
                 val tokens =
                     line!!.split("[\\s\\d~`!@#\\$%\\^&\\*\\(\\)\\-\\+\\[\\]\\{\\}\'\"\\\\|/\\?,\\.;:]+")
