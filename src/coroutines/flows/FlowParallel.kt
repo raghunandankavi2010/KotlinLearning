@@ -19,17 +19,19 @@ fun requestFlow(i: Int): Flow<String> = flow {
 }
 // Good read about flow concurrency
 @ExperimentalCoroutinesApi
-fun main() = runBlocking<Unit> {
-    val startTime = System.currentTimeMillis() // remember the start time
-    (1..3).asFlow()
-        .flatMapMerge {
-            requestFlow(it)
-        }.flowOn(computationDispatcher) // does not matter where you put flow on emission happens on thread pool
-        .collect { value ->
-            // collect and print
-            println("Collection Thread : ${Thread.currentThread().name}")
-            println("$value at ${System.currentTimeMillis() - startTime} ms from start")
-        }
+fun main() {
+    runBlocking<Unit> {
+        val startTime = System.currentTimeMillis() // remember the start time
+        (1..3).asFlow()
+            .flatMapMerge {
+                requestFlow(it)
+            }.flowOn(computationDispatcher) // does not matter where you put flow on emission happens on thread pool
+            .collect { value ->
+                // collect and print
+                println("Collection Thread : ${Thread.currentThread().name}")
+                println("$value at ${System.currentTimeMillis() - startTime} ms from start")
+            }
+    }
     computationDispatcher.close()
 }
 
