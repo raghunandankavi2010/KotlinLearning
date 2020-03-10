@@ -1,6 +1,7 @@
 package coroutines.flows
 
 import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.*
 import java.util.concurrent.Executor
 import java.util.concurrent.Executors
@@ -23,7 +24,7 @@ fun main() = runBlocking<Unit> {
     (1..3).asFlow()
         .flatMapMerge {
             requestFlow(it)
-        }.flowOn(dispatcher) // does not matter where you put flow on emission happens on thread pool
+        }.flowOn(IO) // does not matter where you put flow on emission happens on thread pool
         .collect { value ->
             // collect and print
             println("Collection Thread : ${Thread.currentThread().name}")
