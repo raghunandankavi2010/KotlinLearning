@@ -12,7 +12,7 @@ import java.util.concurrent.Executors
 fun requestFlow(i: Int): Flow<String> = flow {
     delay(500) // wait 500 ms
     emit("$i")
-    println("Emission Thread : ${Thread.currentThread().name}")
+    println("Emission Thread : ${Thread.currentThread().name}"+" emitting "+i)
 }
 
 // Good read about flow concurrency
@@ -24,9 +24,9 @@ fun main() = runBlocking<Unit> {
         }.flowOn(computationDispatcher) // does not matter where you put flow on emission happens on thread pool
         .collect { value ->
             // collect and print
-            println("Collection Thread : ${Thread.currentThread().name}"+" "+value)
-            computationDispatcher.close()
+            println("Collection Thread : ${Thread.currentThread().name}"+" collecting "+value)
         }
+    computationDispatcher.close()
 }
 
 
