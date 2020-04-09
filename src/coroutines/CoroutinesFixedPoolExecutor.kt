@@ -8,10 +8,10 @@ fun log(msg: String) = println("[${Thread.currentThread().name}] [${Thread.curre
 
 fun main() = runBlocking {
 
-    val executorService = Executors.newSingleThreadExecutor { r ->
+/*    val executorService = Executors.newSingleThreadExecutor { r ->
         Thread(r, "TestExecutor")
-
     }
+    val dispatcher = executorService.asCoroutineDispatcher()*/
 
     val computationExecutor = Executors.newFixedThreadPool(
         Runtime.getRuntime().availableProcessors()){
@@ -22,7 +22,7 @@ fun main() = runBlocking {
     }
 
     val dispatcher1 = computationExecutor.asCoroutineDispatcher()
-    val dispatcher = executorService.asCoroutineDispatcher()
+
 
     repeat(4) {
         launch {
@@ -32,10 +32,10 @@ fun main() = runBlocking {
                 delay(2000)
                 log("Finished sleep $it")
             }
+            dispatcher1.close()
+            check(computationExecutor.isShutdown)
         }
     }
-    dispatcher.close()
-    check(executorService.isShutdown)
 
 }
 
