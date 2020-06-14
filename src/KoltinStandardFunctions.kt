@@ -3,8 +3,8 @@
 ╠══════════╬═════════════════╬═══════════════╬═══════════════╣
 ║ let      ║ this@MyClass    ║ String("...") ║ Int(42)       ║
 ║ run      ║ String("...")   ║ N\A           ║ Int(42)       ║
-║ run*     ║ this@MyClass    ║ N\A           ║ Int(42)       ║
-║ with*    ║ String("...")   ║ N\A           ║ Int(42)       ║
+║ run*     ║ this@MyClass    ║ N\A           ║ Int(42)       ║ (modifies outer object)
+║ with*    ║ String("...")   ║ N\A           ║ Int(42)       ║ (modifies outer object)
 ║ apply    ║ String("...")   ║ N\A           ║ String("...") ║
 ║ also     ║ this@MyClass    ║ String("...") ║ String("...")
  *
@@ -18,11 +18,11 @@ fun main(){
 
     val string = "Hello World"
 
-    also(string)
-    with(string) // object and takes a param
-    let(string)
+    //also(string)
+    //with(string) // object and takes a param
+    //let(string)
     runext(string) //
-    apply(string) // apply some properties to object return type object
+    //apply(string) // apply some properties to object return type object
 }
 
 fun also(string :String){
@@ -81,7 +81,9 @@ fun runext(string:String){
 
     data class Person(var name: String, var tutorial : String)
     val person = Person("Raghunandan", "Kotlin")
-
+    println("Before....")
+    println("Name : ${person.name} Tutorials ${person.tutorial}")
+    println("After....")
     person.run {
         name = "Raghunandan Kavi" // name is modified
         tutorial = "Kotlin tutorials" // tutorial also modified

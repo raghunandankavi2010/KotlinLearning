@@ -21,7 +21,7 @@ fun main() = runBlocking<Unit> {
     (1..3).asFlow()
         .flatMapMerge {
             requestFlow(it)
-        }.flowOn(computationDispatcher) // does not matter where you put flow on emission happens on thread pool
+        }.flowOn(Dispatchers.IO) // does not matter where you put flow on emission happens on thread pool
         .collect { value ->
             // collect and print
             println("Collection Thread : ${Thread.currentThread().name}"+" collecting "+value)
