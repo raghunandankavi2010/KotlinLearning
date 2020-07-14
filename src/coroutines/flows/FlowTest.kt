@@ -1,12 +1,10 @@
 package coroutines.flows
 
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.InternalCoroutinesApi
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.runBlocking
 
-@InternalCoroutinesApi
+
+@ExperimentalCoroutinesApi
 fun main() {
     zipWhenCompletesBeforeAnother()
     combineWithDelay()
@@ -15,7 +13,7 @@ fun main() {
 /**
  * zip waits for both streams and then combines
  */
-@InternalCoroutinesApi
+@ExperimentalCoroutinesApi
 fun zipWhenCompletesBeforeAnother() {
     val nums = (1..3).asFlow()
     val strs = flowOf("one","two","three","four")
@@ -31,6 +29,7 @@ fun zipWhenCompletesBeforeAnother() {
 /**
  * combine combines both streams irrespective of the time
  */
+@ExperimentalCoroutinesApi
 fun combineWithDelay() {
     val nums = (1..3).asFlow().onEach { delay(300) }
     val strs = flowOf("one","two","three").onEach { delay(400) }
