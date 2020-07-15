@@ -2,7 +2,6 @@ package coroutines.flows
 
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
-import java.lang.RuntimeException
 import java.util.concurrent.Executors
 
 /**
