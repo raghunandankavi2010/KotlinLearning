@@ -71,3 +71,25 @@ class InsectInteractorMapperImp: InsectInteractorMapper<SuperClass,A> {
         return insectDataModelList.toList()
     }
 }*/
+/**
+ * in is used when you want to assign to a subtype
+ * class Consumer<in :T> {
+ *   fun toString(value: T): String {
+ *     return value.toString()
+ *   }
+ * }
+ * val consumer = Consumer<Number>
+ * val c1:Consumer<Double> = consumer
+ * Double is subtype of Number
+ *
+ * out is used when you when to assign it to supertype
+ *
+ * class Producer<out T>(private val value: T) {
+ *    fun get() :T {
+ *    return value
+ * }
+ * val producer = Producer("Raghu")
+ * val p1: Producer<Any> = producer
+ * Any is a super type of String
+ *
+*/
