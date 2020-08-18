@@ -3,8 +3,15 @@
  */
 fun main(){
 
-    val student1 = Student("Raghunandan",23)
-    val student2 = Student("Raghunandan",23)
+    val student1 = student {
+        name = "First Student"
+        id = 11
+    }
+    val student2 = student {
+        name = "First Student"
+        id = 11
+    }
+
     // structural equality == in kotlin same as .equals in java
     if(student1==student2){
         println("Both student contents are same")
@@ -19,23 +26,12 @@ fun main(){
         println("Both do not point to same object")
     }
 
-    val a = Integer.valueOf(10)
-    val b = Integer.valueOf(10)
-
-
-    if(a == b){
-        println("Both a and b have same contents")
-    }else {
-        println("Both a and b do not have same contents")
-    }
-
-
-    if(a === b){
-        println("Both a and b point to same object")
-    }else {
-        println("Both a and b point to different object")
-    }
-
 }
-// data class has implementation of equals hashcode and tostring
-data class Student(var name:String,var id:Int)
+// data class has implementation of equals hashcode and toString
+data class Student(var name:String? = null,var id:Int? = null)
+
+// Use of koltin dsl
+// Student.() is lambda receiver apply student properties.
+fun student(student: Student.()->Unit): Student = Student().apply(student)
+
+
