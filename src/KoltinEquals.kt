@@ -5,11 +5,11 @@ fun main(){
 
     val student1 = student {
         name = "First Student"
-        id = 11
+        age = 11
     }
     val student2 = student {
         name = "First Student"
-        id = 11
+        age = 11
     }
 
     // structural equality == in kotlin same as .equals in java
@@ -28,10 +28,18 @@ fun main(){
 
 }
 // data class has implementation of equals hashcode and toString
-data class Student(var name:String? = null,var id:Int? = null)
+data class Student(val name:String,val id:Int )
 
-// Use of koltin dsl
-// Student.() is lambda receiver apply student properties.
-fun student(student: Student.()->Unit): Student = Student().apply(student)
+class StudentBuilder {
+    var name = ""
+    var age = 0
+
+    fun build() = Student(name,age)
+}
+
+// Use of kotlin dsl
+// StudentBuilder.() is lambda receiver and you apply student properties.
+fun student(student: StudentBuilder.()->Unit): Student = StudentBuilder().apply(student).build()
+
 
 

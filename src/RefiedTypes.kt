@@ -5,6 +5,17 @@ import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
  * https://stackoverflow.com/questions/45949584/how-does-the-reified-keyword-in-kotlin-work
  */
 
+// Overloading return type using reified
+inline fun <reified T> calculate(value: Float): T {
+    return when (T::class) {
+        Float::class -> value as T
+        Int::class -> value.toInt() as T
+        else -> throw IllegalStateException("Only works with Float and Int")
+    }
+}
+
+
+
 
 // 1. Reified types can be used only with inline functions
 // 2. When you call an inline function with reified type,
@@ -18,6 +29,11 @@ inline fun <reified T : Any> String.toKotlinObject(): T {
 
 fun main() {
 
+    val intCall: Int = calculate<Int>(12.3f)
+    val floatCall: Float = calculate<Float>(12.3f)
+
+    println(intCall)
+    println(floatCall)
 
     val string = " {\n" +
             " \t\"color\": \"black\",\n" +
@@ -33,11 +49,15 @@ fun main() {
 
 /**
  * In android
- * inline fun <T> Context.openActivity(it: Class<T>, extras: Bundle.() -> Unit = {}) {
- * var intent = Intent(this, it)
- * intent.putExtras(Bundle().apply(extras))
+ * inline fun <reified T:Any> Context.openActivity(noinline init: Intent.()-> Unit {}) {
+ * var intent = newIntent<T>(this)
+ * intent.init()
  * startActivity(intent)
  * }
+ *
+ * inline fun <reified T: Any> newIntent(context: Context): Intent =
+ *              Intent(context,T::class.java)
+ *
  * Usage : T is resolved to MainActivity
  * openActivity(MyActivity::class.java) {
  * putString("string.key", "string.value")
