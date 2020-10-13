@@ -3,8 +3,8 @@ fun main(args: Array<String>) {
     val list = ArrayList<Medicine>()
     list.add(Medicine("BloodPressure", 10))
     list.add(Medicine("BloodPressure", 1200))
-    list.add(Medicine("Diabetis", 20))
-    list.add(Medicine("Diabetis", 100))
+    list.add(Medicine("Diabetes", 20))
+    list.add(Medicine("Diabetes", 100))
     list.add(Medicine("Sugar", 105))
     list.add(Medicine("Sugar", 120))
 
