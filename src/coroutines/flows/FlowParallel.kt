@@ -8,7 +8,6 @@ import java.util.concurrent.Executors
  *  Each emission will happen on a thread pool
  *  Collection of items will happen on main thread.
  */
-@ExperimentalCoroutinesApi
 fun requestFlow(i: Int): Flow<String> = flow {
     delay(500) // wait 500 ms
     emit("$i")
@@ -17,7 +16,7 @@ fun requestFlow(i: Int): Flow<String> = flow {
 }
 
 // Good read about flow concurrency
-@ExperimentalCoroutinesApi
+
 fun main() = runBlocking<Unit> {
     (1..3).asFlow()
         .flatMapMerge {
@@ -28,7 +27,7 @@ fun main() = runBlocking<Unit> {
             // collect and print
             println("Collection Thread : ${Thread.currentThread().name}"+" collecting "+value)
         }
-    computationDispatcher.close()
+    //computationDispatcher.close()
 }
 
 
