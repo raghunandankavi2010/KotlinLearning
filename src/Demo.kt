@@ -1,7 +1,3 @@
-/**
- * Demo from the talk at google io
- *
- */
 
 fun main(){
 
@@ -9,6 +5,13 @@ fun main(){
     val firstName = name[0]
     val lastName = name[1]
 
+    val numbers = listOf(1,2,3,4,5,6,7,8)
+    val evenNumbers = numbers.filter {
+        it%2==0
+    }
+    evenNumbers.forEach {
+        println(it)
+    }
     println("First Name: $firstName")
     println("Last Name: $lastName")
 }
