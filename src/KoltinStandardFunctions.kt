@@ -1,3 +1,8 @@
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+
 /**
   Function ║ Receiver (this) ║ Argument (it) ║    Result     ║
 ╠══════════╬═════════════════╬═══════════════╬═══════════════╣
@@ -70,6 +75,23 @@ fun let(string:String) {
 }
 
 fun runext(string:String){
+
+    var myString: String? = null
+
+    runBlocking {
+        launch {
+            delay(1000L)
+            myString = "Hello World!"
+        }
+
+        launch {
+            delay(2000L)
+            myString?.run {
+                println("$this is not empty")
+            }
+        }
+
+    }
 
     val result2 = string.run {
         println(this) // this refers to the string
