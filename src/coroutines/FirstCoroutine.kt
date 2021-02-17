@@ -1,8 +1,6 @@
 package coroutines
 
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 
 /**
  *  run blocking keeps the main thread alive
@@ -18,6 +16,5 @@ fun main() {
             print("World!") // print after delay
         }
         print("Hello ") // main thread continues while coroutine is delayed
-
     }
 }
