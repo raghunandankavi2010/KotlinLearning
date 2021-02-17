@@ -14,6 +14,7 @@ fun main() {
             val secondChild = launch {
                 // Cancellation of the first child is not propagated to the second child
                 println("The first child is cancelled: ${firstChild.isCancelled}, but the second one is still active")
+                println("The second child is running: $isActive")
                 try {
                     delay(Long.MAX_VALUE)
                 } finally {
