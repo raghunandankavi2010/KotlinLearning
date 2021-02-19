@@ -22,6 +22,12 @@ fun main() {
                     println("The second child is cancelled because the supervisor was cancelled")
                 }
             }
+
+            //wait until first child fails and completes
+            firstChild.join()
+            println("Cancelling the supervisor")
+            supervisor.cancel()
+            secondChild.join()
         }
     }
 }
