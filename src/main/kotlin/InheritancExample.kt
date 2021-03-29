@@ -5,6 +5,7 @@ fun main() {
 }
 
 open class BaseClass {
+
     open val name: String = "BaseClass"
     open fun printMe() {
         println("Base Class")
@@ -24,7 +25,6 @@ interface BaseClass2 {
 class MyClass : BaseClass(), BaseClass2 {
 
     override var name = "Hello Base Class"
-    
     override fun printMe() {
         super<BaseClass>.printMe()
         super<BaseClass2>.printMe()

@@ -12,6 +12,8 @@ class DataClassExample {
         }
     }
 
+    // data classes must have atleast one param for the constructor
+    // data classes generate hashcode toString equals implementation
     data class User(var name: String, var age: Int)
 
 }
