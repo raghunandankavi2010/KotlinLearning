@@ -1,4 +1,4 @@
-fun main(args: Array<String>) {
+fun main() {
 
     val list = ArrayList<Medicine>()
     list.add(Medicine("BloodPressure", 10))
