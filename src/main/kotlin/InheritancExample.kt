@@ -1,5 +1,3 @@
-
-
 fun main() {
 
     val myClass = MyClass()
@@ -7,10 +5,11 @@ fun main() {
 }
 
 open class BaseClass {
-    open val name:String = "BaseClass"
-    open fun  printMe() {
-          println("Base Class")
+    open val name: String = "BaseClass"
+    open fun printMe() {
+        println("Base Class")
     }
+
     fun notOpen() {
         println("Not Open")
     }
@@ -22,10 +21,10 @@ interface BaseClass2 {
     }
 }
 
-class MyClass: BaseClass(), BaseClass2 {
+class MyClass : BaseClass(), BaseClass2 {
 
     override var name = "Hello Base Class"
-
+    
     override fun printMe() {
         super<BaseClass>.printMe()
         super<BaseClass2>.printMe()

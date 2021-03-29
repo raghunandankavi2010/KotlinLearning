@@ -9,7 +9,7 @@ fun person(block: PersonBuilder.() -> Unit): Person = PersonBuilder().apply(bloc
 class PersonBuilder {
 
     var name: String = ""
-    var age : Int = 0
+    var age: Int = 0
     private var dob: Date = Date()
     var dateOfBirth: String = ""
         set(value) {
@@ -30,12 +30,11 @@ class PersonBuilder {
     }
 
 
-
-    fun build(): Person = Person(name, dob,age, addresses,loves)
+    fun build(): Person = Person(name, dob, age, addresses, loves)
 
 }
 
-class ADDRESSES: ArrayList<Address>() {
+class ADDRESSES : ArrayList<Address>() {
 
     fun address(block: AddressBuilder.() -> Unit) {
         add(AddressBuilder().apply(block).build())
@@ -49,7 +48,7 @@ class AddressBuilder {
     var number: Int = 0
     var city: String = ""
 
-    fun build() : Address = Address(street, number, city)
+    fun build(): Address = Address(street, number, city)
 
 }
 
@@ -57,22 +56,27 @@ class LovesBuilder {
 
     var game: String = ""
 
-    fun build() : Loves = Loves(game)
+    fun build(): Loves = Loves(game)
 
 }
-data class Person(val name: String,
-                  val dateOfBirth: Date,
-                  val age: Int,
-                  val addresses: List<Address>,val loves:Loves?)
 
-data class Address(val street: String,
-                   val number: Int,
-                   val city: String)
+data class Person(
+    val name: String,
+    val dateOfBirth: Date,
+    val age: Int,
+    val addresses: List<Address>, val loves: Loves?
+)
+
+data class Address(
+    val street: String,
+    val number: Int,
+    val city: String
+)
 
 data class Loves(val game: String)
 
 
-fun main(args: Array<String>) {
+fun main() {
     val p = person {
         name = "Raghunandan"
         dateOfBirth = "23-12-1986"

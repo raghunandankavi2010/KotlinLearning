@@ -5,11 +5,11 @@ typealias Predicate = (String) -> Boolean
 
 fun foo(p: Predicate) = p("Hello World")
 
-fun main(args:Array<String>){
+fun main(){
 
     val f: (String) -> Boolean = { it.length >3 }
     println(foo(f))
     val users:Users = listOf(User1("Raghunandan","Kavi"),User1("aaa","bbb"))
 
-    println("${users.get(0)}")
+    println("${users[0]}")
 }

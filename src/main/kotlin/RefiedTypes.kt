@@ -17,8 +17,8 @@ inline fun <reified T> calculate(value: Float): T {
 
 fun main() {
 
-    val intCall: Int = calculate<Int>(12.3f)
-    val floatCall: Float = calculate<Float>(12.3f)
+    val intCall: Int = calculate(12.3f)
+    val floatCall: Float = calculate(12.3f)
 
     println(intCall)
     println(floatCall)

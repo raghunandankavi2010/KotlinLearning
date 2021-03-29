@@ -1,10 +1,7 @@
+fun main() {
 
-
-
-fun main(){
-
-    var a = A()
-    var strs = a
+    val a = A()
+    val strs = a
     val objects: Source<Any> = strs // This is OK, since T is an out-parameter
 }
 
@@ -13,7 +10,7 @@ interface Source<out T> {
 }
 
 
-class A :Source<Int> {
+class A : Source<Int> {
     override fun nextT(): Int {
         return 1
     }
@@ -92,4 +89,4 @@ class InsectInteractorMapperImp: InsectInteractorMapper<SuperClass,A> {
  * val p1: Producer<Any> = producer
  * Any is a super type of String
  *
-*/
+ */

@@ -1,5 +1,4 @@
-
-fun main(){
+fun main() {
 
     test {
         println("Do Something")
@@ -7,12 +6,13 @@ fun main(){
     test(::calculate)
 
 }
-fun calculate(){
+
+fun calculate() {
     println("Dosomething")
 }
 
-fun test(abs: ()->Unit) {
-   println("Started")
+fun test(abs: () -> Unit) {
+    println("Started")
     abs()
     println("Ended")
 }

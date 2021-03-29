@@ -23,33 +23,33 @@ fun main(){
 
     val string = "Hello World"
 
-    //also(string)
-    //with(string) // object and takes a param
-    //let(string)
+    also(string)
+    with(string) // object and takes a param
+    let(string)
     runext(string) //
-    //apply(string) // apply some properties to object return type object
+    apply(string) // apply some properties to object return type object
 }
 
 fun also(string :String){
+    // also return same object
     val result1 = string.also {
-        //print(this) // Receiver refers to the class
         println(it) // Argument refers to the string
-        // Block return value block return value
     }
-
-    println("Result $result1")
+    println("Also Result $result1")
 
 }
 
 
 fun with(string :String){
-    println("With......")
+
+    // with takes a object as argument and applies some properties to it
+    // return can be anything that the lambda block returns
     val result = with(string) {
         println(this) // this refers to the string
         44  //return value .No argument received
     }
 
-    println("Result $result")
+    println("With Result $result")
 
     // Another Example
     data class Person(var name: String, var tutorial : String)
@@ -67,11 +67,10 @@ fun with(string :String){
 
 fun let(string:String) {
     val result = string.let {
-        //print(this) // Receiver refers to the class
         println(it) // Argument refers to the string
         42 // Block return value block return value
     }
-    println("Result $result")
+    println("Let Result $result")
 }
 
 fun runext(string:String){
