@@ -3,7 +3,7 @@ package collections
 /**
  * https://blog.kotlin-academy.com/effective-kotlin-use-sequence-for-bigger-collections-with-more-than-one-processing-step-649a15bb4bf
  * Prefer sequences for large collection and if you are using multiple operators to transform the sequence
- *
+ * Good read https://medium.com/androiddevelopers/collections-and-sequences-in-kotlin-55db18283aca
  */
 fun main() {
 
