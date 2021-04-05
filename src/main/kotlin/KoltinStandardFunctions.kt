@@ -34,6 +34,8 @@ fun main() {
     runext(string) //
     apply(string) // apply some properties to object return type object
     testLet()
+    var name: String? = "Raghunandan"
+    test4(name)
 }
 
 fun also(string: String) {
@@ -148,7 +150,7 @@ fun testLet() {
 fun testLet2() {
     val copy = property
     if (copy != null) {
-          println("Property is not null")
+        println("Property is not null")
     }
 }
 
@@ -159,6 +161,25 @@ fun testLet3() {
     if (property != null) {
         property = null
         println(property)
+    }
+}
+
+// use if when method takes nullable variable
+// don't use let. Check the decompiled code
+// public final void test4(@Nullable String name) {
+//   if (name != null) {
+//      boolean var4 = false; // introduces unwanted variable
+//      /*Do something*/
+//   }
+//}
+// if this function is called lot of times then you would create the variable
+// many times. use if else here
+fun test4(name: String?) {
+    name?.let {
+        println(it)
+    }
+    if (name != null) {
+        println(name)
     }
 }
 
