@@ -4,14 +4,14 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 /**
-Function ║ Receiver (this) ║ Argument (it) ║    Result     ║
+║ Function ║ Receiver (this) ║ Argument (it) ║    Result     ║
 ╠══════════╬═════════════════╬═══════════════╬═══════════════╣
 ║ let      ║ this@MyClass    ║ String("...") ║ Int(42)       ║
 ║ run      ║ String("...")   ║ N\A           ║ Int(42)       ║
 ║ run*     ║ this@MyClass    ║ N\A           ║ Int(42)       ║ (modifies outer object)
 ║ with*    ║ String("...")   ║ N\A           ║ Int(42)       ║ (modifies outer object)
 ║ apply    ║ String("...")   ║ N\A           ║ String("...") ║
-║ also     ║ this@MyClass    ║ String("...") ║ String("...")
+║ also     ║ this@MyClass    ║ String("...") ║ String("...") ║
  *
  */
 
@@ -29,9 +29,9 @@ fun main() {
     val string = "Hello World"
 
     also(string)
-    with(string) // object and takes a param
-    let(string)
-    runext(string) //
+    with(string) // object and takes a param can return anything from the lambda // this
+    let(string) // it used for null check for mutable data types
+    runext(string) // check for null run something if its not null
     apply(string) // apply some properties to object return type object
     testLet()
     var name: String? = "Raghunandan"
