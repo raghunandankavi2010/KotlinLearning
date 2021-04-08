@@ -12,6 +12,7 @@ fun main(){
         age = 11
     }
 
+
     // structural equality == in kotlin same as .equals in java
     if(student1==student2){
         println("Both student contents are same")
@@ -25,10 +26,22 @@ fun main(){
     }else {
         println("Both do not point to same object")
     }
+    
+    val student3: Student = student1
+    if(student3 == student1) {
+        println("Student 3 and Student 1 contents are same")
+    } else {
+        println("Student 3 and Student 1 contents are same")
+    }
+    if(student3 === student1) {
+        println("Student 3 and Student 1 point to same Student object")
+    } else {
+        println("Student 3 and Student 1 does not point to same Student Object")
+    }
 
 }
 // data class has implementation of equals hashcode and toString
-data class Student(val name:String,val id:Int )
+data class Student(val name:String,val age:Int )
 
 class StudentBuilder {
     var name = ""
