@@ -101,4 +101,21 @@ fun main() {
         }
     }
     println(p)
+
+    val salary = salary {
+          name = "Raghunandan"
+          age = 34
+    }
+    println(salary)
 }
+
+data class Salary(var name: String, var age: Int)
+
+class SalaryBuilder {
+    var name = ""
+    var age = 0
+
+    fun build(): Salary = Salary(name,age)
+}
+
+fun salary(salary: SalaryBuilder.() -> Unit) = SalaryBuilder().apply(salary).build()
