@@ -17,6 +17,7 @@ inline fun <reified T> calculate(value: Float): T {
 
 fun main() {
 
+
     val intCall: Int = calculate(12.3f)
     val floatCall: Float = calculate(12.3f)
 
@@ -24,6 +25,8 @@ fun main() {
     println(floatCall)
 
 }
+
+
 
 /**
  * In android
