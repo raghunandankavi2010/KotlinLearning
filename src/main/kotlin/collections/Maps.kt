@@ -27,6 +27,12 @@ data class Person(var name: String, var age: Int = 0, var phoneNumber: String?) 
 }
 fun main() {
 
+    val calendar = Calendar.getInstance()
+    val startTS = calendar.timeInMillis
+    val prevYear = calendar.add(Calendar.YEAR, -1)
+    val endTs = calendar.timeInMillis
+    println("Start = $startTS end = $endTs")
+
     val person1 = Person("Raghunandan",34,"9986929644")
     val person2 = Person("Kiran",35,"897127464658")
     // map can also be initialized like below
