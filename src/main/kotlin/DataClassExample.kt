@@ -4,6 +4,9 @@ class DataClassExample {
         @JvmStatic
         fun main(vararg: Array<String>) {
 
+            val child = Child("Raghunandan")
+            println("${child.responseCode} ${child.data}")
+
             val user = User("Raghunandan", 30)
 
             val user2 = User("Raghunandan", "Male", 34)
@@ -61,5 +64,19 @@ class DataClassExample {
 
 
     }
+
+    open class Parent {
+        var responseCode = 200
+    }
+
+    // kind of works but useless
+    data class Child(var data: String) : Parent()
+
+    // Sealed class with instance specific data
+    sealed class Result {
+        data class Success(var data: Any): Result()
+        data class Failure(var throwable: Throwable): Result()
+    }
+
 
 }
