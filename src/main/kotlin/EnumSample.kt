@@ -2,13 +2,31 @@
 
 fun main(){
 
-    val honda = Car.Honda
-    println(honda)
-    Car.Honda.carname = "Honda Car"
-    println(Car.Honda.carname)
+    val car = Car.Suzuki
+    Car.Suzuki.carName = "Suzuki Car"
+    printCar(car)
+    //Car.Honda.carName = "Honda Car"
+
+    //println(Car.Honda.carName)
+
 
 }
-enum class Car(var carname: String){
+
+fun printCar(car: Car) {
+    when(car) {
+        Car.Honda -> {
+            println(Car.Honda.carName)
+        }
+        Car.Suzuki -> {
+            println(Car.Suzuki.carName)
+        }
+        Car.Maruti -> {
+            println(Car.Maruti.carName)
+        }
+
+    }
+}
+enum class Car(var carName: String){
     Honda("Honda"),
     Suzuki("Suzuki"),
     Maruti("Maruti")
