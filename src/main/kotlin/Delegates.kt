@@ -16,7 +16,7 @@ fun main() {
 
 }
 
-val name: String by lazy {
+val name: String by lazy(LazyThreadSafetyMode.NONE) {
     "Raghunandan"
 }
 

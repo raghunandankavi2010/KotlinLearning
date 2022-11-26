@@ -1,20 +1,100 @@
+interface Produce<out T> {
+    fun produce(): T
+}
+
+interface Consume<in T> {
+    fun consume()
+}
+open class Fruits {
+    open fun printFruits() {
+        println("Frutis")
+    }
+}
+
+open class Apple: Fruits() {
+    override fun printFruits() {
+        println("Apple Fruits")
+    }
+}
+
+
+class KashmirApple : Apple() {
+    override fun printFruits() {
+        println("Kashmir Apple")
+    }
+}
+
+class FruitsProductions : Produce<Fruits> {
+    override fun produce(): Fruits {
+        println("Fruits Productions")
+        return Fruits()
+    }
+}
+
+class AppleProductions : Produce<Apple> {
+    override fun produce(): Apple {
+        println("Apple Productions")
+        return Apple()
+    }
+}
+
+class KashmirAppleProductions : Produce<KashmirApple> {
+    override fun produce(): KashmirApple {
+        println("KashmirApple Productions")
+        return KashmirApple()
+    }
+}
+
+class FruitsConsumption : Consume<Fruits> {
+    override fun consume() {
+        println("Fruits consumed")
+    }
+}
+
+class AppleConsumption : Consume<Apple> {
+    override fun consume() {
+        println("Apple consumed")
+    }
+}
+
+class KashmirAppleConsumption : Consume<KashmirApple> {
+    override fun consume() {
+        println("KashmirApple consumed")
+    }
+}
+
+
 fun main() {
 
     val a = A()
     val strs = a
     val objects: Source<Any> = strs // This is OK, since T is an out-parameter
+    val fruitsProduce : Produce<Fruits> = FruitsProductions()
+    val appleProduce : Produce<Fruits> = AppleProductions()
+    val kashmirApple : Produce<Fruits> = KashmirAppleProductions()
+
+//    val fruitsProduce2 : Produce<KashmirApple> = FruitsProductions()
+//    val appleProduce2 : Produce<KashmirApple> = AppleProductions()
+    val kashmirApple2 : Produce<Apple> = KashmirAppleProductions()
+
+    val consumer1 : Consume<KashmirApple> = FruitsConsumption()
+    val consumer2 : Consume<KashmirApple> = AppleConsumption()
+    val consumer3 : Consume<KashmirApple> = KashmirAppleConsumption()
+
 }
 
 interface Source<out T> {
+
+
     fun nextT(): T
 }
+
 
 
 class A : Source<Int> {
     override fun nextT(): Int {
         return 1
     }
-
 }
 /*interface Base
 class Base1: Base
@@ -90,3 +170,4 @@ class InsectInteractorMapperImp: InsectInteractorMapper<SuperClass,A> {
  * Any is a super type of String
  *
  */
+
