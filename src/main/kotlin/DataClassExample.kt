@@ -9,6 +9,16 @@ class DataClassExample {
 
             val user = User("Raghunandan", 30)
 
+
+            val userU1 = User("Raghunandan", 30)
+            val userU2 = User("Raghunandan", 30)
+            if(userU1 == userU2) {
+                println(true)
+            } else {
+                println(false)
+            }
+
+
             val user2 = User("Raghunandan", "Male", 34)
             // use copy to change a property and keeping other properties the same
             val userCopy = user.copy(age = 35)
