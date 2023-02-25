@@ -9,6 +9,8 @@ fun main(){
 
     //println(Car.Honda.carName)
 
+    println(Car.valueOf("Maruti"))
+
 
 }
 
