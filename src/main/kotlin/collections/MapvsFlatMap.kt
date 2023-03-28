@@ -1,6 +1,8 @@
 package collections
 
 fun main() {
+    val name = "raghunandan"
+    val charArr = name.toCharArray()
 
     // Map used to transform collection to another type
     val list = listOf(1, 2, 3, 4, 5)
