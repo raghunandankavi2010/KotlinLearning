@@ -2,7 +2,7 @@ package coroutines
 
 import kotlinx.coroutines.*
 
-@kotlin.UseExperimental(DelicateCoroutinesApi::class)
+
 fun main() {
     GlobalScope.launch { // launch new coroutine in background and continue
         delay(1000L) // delay is a suspending function
