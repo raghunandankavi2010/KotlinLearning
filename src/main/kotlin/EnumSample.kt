@@ -11,6 +11,9 @@ fun main(){
 
     println(Car.valueOf("Maruti"))
 
+    val carFound = findByCar("Maruti")
+    println(carFound)
+
 
 }
 
@@ -33,3 +36,6 @@ enum class Car(var carName: String){
     Suzuki("Suzuki"),
     Maruti("Maruti")
 }
+
+@OptIn(ExperimentalStdlibApi::class)
+fun findByCar(carName: String): Car? = Car.entries.find { it.carName == carName }
