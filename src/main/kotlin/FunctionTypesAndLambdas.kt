@@ -7,9 +7,17 @@ fun main() {
     test {
         println("Do Something")
     }
-    test(::calculate)
 
-    printMe("Raghunandan", ::print)
+    printMe("Raghunandan\n", ::print)
+
+    // lambda with type specified
+    calculateSquare(10) { it: Int ->
+         it*it
+    }
+
+    // using method reference
+    calculateSquare(10,::square)
+    calculateMultiply(10,20,::multiply)
 
     inlined {
         println("Inlined function")
@@ -23,14 +31,27 @@ fun main() {
     println(1 add 2)
 }
 
+fun multiply(x: Int, y: Int) : Int {
+    return x*y
+}
+fun square(x: Int) : Int {
+    return x*x
+}
+inline fun calculateSquare(x: Int, cal :(Int) -> Int) {
+    val squaredNum = cal(x)
+    println("Squared Num :$squaredNum")
+}
+
+inline fun calculateMultiply(x: Int, y: Int, cal :(Int, Int) -> Int) {
+    val multipliedNum = cal(x,y)
+    println("Multiplied Num :$multipliedNum")
+}
+
 suspend fun doSomething() {
     delay(1000L)
     println("Printing after 1 second")
 }
 
-fun calculate() {
-    println("Dosomething")
-}
 
 inline fun printMe(str: String, myPrint: (String) -> Unit) {
     myPrint(str)
