@@ -15,7 +15,34 @@ fun main() {
     val test = BackingProperty()
     test.age = 40
     test.print()
+
+   // val animal = Animal("Dog")
+    // this will give error and not compile
+    // why class Animal generates setter and getter
+    // getter is there but not with getHeight simply height
+    //animal.height
+
+    // Here height is encapsulated.
+    val human = Human("Asian")
+    human.setHeight(5)
+    println("Height ${human.getHeight()}")
 }
+
+class Human(name: String) {
+
+    // Here both set and get are private encapsulated
+    // Access using setters and getters
+    private var height = 0
+        private set
+
+    fun setHeight(height: Int) {
+        this.height = height
+    }
+
+    fun getHeight() = height
+}
+
+
 
 // This is backing field
 class TestBackingField {
