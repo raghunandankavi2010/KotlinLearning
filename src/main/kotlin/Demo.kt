@@ -29,7 +29,7 @@ fun parseNameDemo(name:String):List<String>{
 class SomeClass {
 
     companion object {
-        // Const is inlined at the call site.
+        // const is inlined at the call site.
         // Say you are calling this from a java file
         // You would have to recompile so that you get updated value
         // as the value is inlined. So java file has to be recompiled
