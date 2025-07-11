@@ -5,14 +5,25 @@ import kotlinx.serialization.*
 import kotlinx.serialization.json.*
 
 @Serializable
-data class Project(val name: String, val language: String)
+data class Project(
+    @SerialName("name") val name: String,
+    @SerialName("language") val language: String,
+    @SerialName("age") val age: Int?,
+    )
 
-val format = Json { prettyPrint = true }
+
+val json = Json {
+    prettyPrint = true
+    ignoreUnknownKeys = true
+    isLenient = true
+    explicitNulls = false
+
+}
 
 fun main() {
-    val data = Json.decodeFromString<Project>("""
-        {"name":"Scan18Nov21·04·53·26.pdf","language":"Kotlin"}
+    val data = json.decodeFromString<Project>("""
+        {"name":"Raghunandan Kavi","language":"Kotlin", "age":  null}
     """)
 
-    println(data.name)
+    println("My age is ${data.age}")
 }
