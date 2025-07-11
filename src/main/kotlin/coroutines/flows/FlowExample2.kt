@@ -73,7 +73,7 @@ private fun fetchAll(): String {
                 for (element in tokens) {
                     var token = element
                     if (token == "") continue
-                    token = token.toLowerCase()
+                    token = token.lowercase()
                     var n = if (wc.containsKey(token)) wc[token]!! else 0
                     n++
                     wc[token] = n

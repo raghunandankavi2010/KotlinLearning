@@ -1,7 +1,7 @@
 fun main() {
     var name: String? = "Raghunandan"
     name = null
-    println(name?.uppercaseChar())
+    println(name?.uppercase())
 
     name = "Raghunandan"
     name?.let { it ->
