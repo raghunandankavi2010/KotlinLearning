@@ -7,8 +7,8 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
 }
 
-group 'org.example'
-version '1.0-SNAPSHOT'
+group = 'org.example'
+version = '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -31,4 +31,12 @@ tasks.withType(KotlinCompilationTask.class)
         .configureEach {
             compilerOptions.languageVersion =
                     KotlinVersion.KOTLIN_2_4
+            // Opt-in flags for Kotlin 2.4.0 features that are still experimental
+            // and must be enabled explicitly (see src/main/kotlin/whatsnew240).
+            compilerOptions.freeCompilerArgs.addAll([
+                    "-Xexplicit-backing-fields", // _02_ExplicitBackingFields.kt
+                    "-Xcontext-parameters",      // _01_ContextParameters.kt
+            ])
         }
+compileKotlin {
+}
