@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="620" viewBox="0 0 920 620" font-family="-apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#444"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="920" height="620" fill="#fafafa"/>
+
+  <!-- Title -->
+  <text x="460" y="40" text-anchor="middle" font-size="26" font-weight="700" fill="#1a1a1a">Covariance vs Contravariance in Kotlin</text>
+  <text x="460" y="68" text-anchor="middle" font-size="15" fill="#666">an arrow  A &#8594; B  reads "A is a subtype of B"</text>
+
+  <!-- ===================== Column headers ===================== -->
+  <text x="150" y="118" text-anchor="middle" font-size="17" font-weight="700" fill="#333">Type hierarchy</text>
+  <text x="460" y="118" text-anchor="middle" font-size="17" font-weight="700" fill="#1b7a3d">Producer&lt;out T&gt;  (covariant)</text>
+  <text x="760" y="118" text-anchor="middle" font-size="17" font-weight="700" fill="#b5621a">Consumer&lt;in T&gt;  (contravariant)</text>
+
+  <!-- ===================== Arrows (drawn first, behind boxes) ===================== -->
+  <!-- Base column: Puppy -> Dog -> Animal -->
+  <line x1="150" y1="380" x2="150" y2="298" stroke="#444" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="150" y1="240" x2="150" y2="158" stroke="#444" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- Producer column (covariant): same direction as base -->
+  <line x1="460" y1="380" x2="460" y2="298" stroke="#1b7a3d" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="460" y1="240" x2="460" y2="158" stroke="#1b7a3d" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- Consumer column (contravariant): direction REVERSED -->
+  <line x1="760" y1="380" x2="760" y2="298" stroke="#b5621a" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <line x1="760" y1="240" x2="760" y2="158" stroke="#b5621a" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <!-- ===================== Base type boxes ===================== -->
+  <g>
+    <rect x="60" y="138" width="180" height="46" rx="8" fill="#eceff1" stroke="#90a4ae" stroke-width="1.5"/>
+    <text x="150" y="167" text-anchor="middle" font-size="16" fill="#263238">Animal</text>
+
+    <rect x="60" y="278" width="180" height="46" rx="8" fill="#eceff1" stroke="#90a4ae" stroke-width="1.5"/>
+    <text x="150" y="307" text-anchor="middle" font-size="16" fill="#263238">Dog</text>
+
+    <rect x="60" y="418" width="180" height="46" rx="8" fill="#eceff1" stroke="#90a4ae" stroke-width="1.5"/>
+    <text x="150" y="447" text-anchor="middle" font-size="16" fill="#263238">Puppy</text>
+  </g>
+
+  <!-- ===================== Producer (covariant) boxes ===================== -->
+  <g>
+    <rect x="370" y="138" width="180" height="46" rx="8" fill="#e3f4e8" stroke="#1b7a3d" stroke-width="1.5"/>
+    <text x="460" y="167" text-anchor="middle" font-size="15" fill="#0f5128">Producer&lt;Animal&gt;</text>
+
+    <rect x="370" y="278" width="180" height="46" rx="8" fill="#e3f4e8" stroke="#1b7a3d" stroke-width="1.5"/>
+    <text x="460" y="307" text-anchor="middle" font-size="15" fill="#0f5128">Producer&lt;Dog&gt;</text>
+
+    <rect x="370" y="418" width="180" height="46" rx="8" fill="#e3f4e8" stroke="#1b7a3d" stroke-width="1.5"/>
+    <text x="460" y="447" text-anchor="middle" font-size="15" fill="#0f5128">Producer&lt;Puppy&gt;</text>
+  </g>
+
+  <!-- ===================== Consumer (contravariant) boxes — note Animal is at the BOTTOM ===================== -->
+  <g>
+    <rect x="670" y="138" width="180" height="46" rx="8" fill="#fdeede" stroke="#b5621a" stroke-width="1.5"/>
+    <text x="760" y="167" text-anchor="middle" font-size="15" fill="#8a4612">Consumer&lt;Puppy&gt;</text>
+
+    <rect x="670" y="278" width="180" height="46" rx="8" fill="#fdeede" stroke="#b5621a" stroke-width="1.5"/>
+    <text x="760" y="307" text-anchor="middle" font-size="15" fill="#8a4612">Consumer&lt;Dog&gt;</text>
+
+    <rect x="670" y="418" width="180" height="46" rx="8" fill="#fdeede" stroke="#b5621a" stroke-width="1.5"/>
+    <text x="760" y="447" text-anchor="middle" font-size="15" fill="#8a4612">Consumer&lt;Animal&gt;</text>
+  </g>
+
+  <!-- ===================== Footer takeaways ===================== -->
+  <text x="150" y="510" text-anchor="middle" font-size="13" fill="#555">Animal is at the TOP</text>
+  <text x="460" y="510" text-anchor="middle" font-size="13" fill="#1b7a3d">Animal still at the TOP &#8594; preserved</text>
+  <text x="760" y="510" text-anchor="middle" font-size="13" fill="#b5621a">Animal at the BOTTOM &#8594; flipped</text>
+
+  <rect x="60" y="540" width="800" height="56" rx="10" fill="#fff" stroke="#ddd" stroke-width="1.5"/>
+  <text x="80" y="566" font-size="14" font-weight="700" fill="#1a1a1a">PECS — Producer Extends, Consumer Super</text>
+  <text x="80" y="586" font-size="13" fill="#555">out T &#8594; T only comes OUT (return values), safe to widen &#160;&#160;|&#160;&#160; in T &#8594; T only goes IN (parameters), safe to narrow</text>
+</svg>
