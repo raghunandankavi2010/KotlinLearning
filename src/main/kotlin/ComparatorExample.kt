@@ -9,7 +9,7 @@ fun main() {
     list.add(Medicine("Sugar", 120))
     list.add(Medicine("Sugar", 100))
 
-    val sortedList = list.sortedWith(compareBy<Medicine> { it.category }).filter { it.price == 100}
+    val sortedList = list.sortedWith(compareBy { it.category }).filter { it.price == 100}
 
     for (obj in sortedList) {
         println(obj)
@@ -21,4 +21,3 @@ data class Medicine(val category: String, val price: Int) {
         return "$category $price"
     }
 }
-

@@ -36,6 +36,7 @@ tasks.withType(KotlinCompilationTask.class)
             compilerOptions.freeCompilerArgs.addAll([
                     "-Xexplicit-backing-fields", // _02_ExplicitBackingFields.kt
                     "-Xcontext-parameters",      // _01_ContextParameters.kt
+                    "-Xcollection-literals",     // CollectionsNewWay.kt
             ])
         }
 compileKotlin {
