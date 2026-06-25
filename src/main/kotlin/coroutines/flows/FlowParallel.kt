@@ -9,7 +9,26 @@ import java.util.concurrent.Executors
  *  Collection of items will happen on main thread.
  */
 
-// Good read about flow concurrency
+import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.*
+
+@OptIn(ExperimentalCoroutinesApi::class)
+fun main() = runBlocking {
+    // 1. Create a flow of 10 tasks (emitting their IDs)
+    (0 until 10).asFlow()
+        .flatMapMerge(concurrency = 3) { id ->
+            flow {
+                println("Task $id started execution.")
+                delay(1000) // Simulating network request or disk I/O
+                emit("Task $id completed.")
+            }
+        }
+        .collect { result ->
+            // Collects and prints results as they finish
+            println(result)
+        }
+}
+/*
 fun main() {
     runBlocking<Unit> {
         (1..3).asFlow()
@@ -25,6 +44,7 @@ fun main() {
     }
 }
 
+*/
 
 fun requestFlow(i: Int): Flow<String> = flow {
     delay(500) // wait 500 ms
